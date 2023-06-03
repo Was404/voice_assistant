@@ -1,0 +1,28 @@
+list:
+- command:
+    action: ahk
+    exe_path: ahk/Open lol.exe
+  voice:
+    sounds:
+    - game_mode
+  phrases:
+  - включи игровой режим
+  - перейди в игровой режим
+  - я хочу поиграть
+  - запусти игру
+  - открой лол
+
+- command:
+    action: ahk
+    exe_path: ahk/Close lol.exe
+  voice:
+    sounds:
+    - ok1
+    - ok2
+    - ok3
+    - ok4
+  phrases:
+  - рабочий режим
+  - вернись
+  - отключи
+  - выйди из лол
