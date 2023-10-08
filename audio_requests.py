@@ -1,10 +1,20 @@
 import pyttsx3
 
-engine = pyttsx3.init('sapi5') #  Microsoft Speech API для использования голоса
+#RU_VOICE_ID = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\TokenEnums\RHVoice\Anna"
 
-engine.setProperty('rate', 190) # свойства речевого движка
+tts = pyttsx3.init() #  Microsoft Speech API для использования голоса
+voices = tts.getProperty('voices')
 
-engine.setProperty('volume', 1.0) # свойства речевого движка
+# Задать голос по умолчанию
+tts.setProperty('voice', 'ru') 
+# свойства речевого движка
+tts.setProperty('rate', 190)
+tts.setProperty('volume', 1.0) 
+tts.getProperty('voices')
+for voice in voices:
+    if voice.name == 'Pavel' or voice.name == 'Aleksandr':
+        tts.setProperty('voice', voice.id)
 
-voices = engine.getProperty('voices') # получаем голос речевого движка
-engine.setProperty('voice', voices[0].id)
+def say_j(msg):
+    tts.say(msg)
+    tts.runAndWait() #запустить на воспроизведение
