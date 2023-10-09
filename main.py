@@ -4,7 +4,6 @@ import audio_requests as ar
 from colorama import Fore, Back, Style
 import commands
 import re
-#import nltk
 import g4f
 
 #nltk.download('punkt')
@@ -38,17 +37,14 @@ def listening():
                         print(Style.NORMAL + Back.BLACK)
                         listening()
                         break
-                    else:
-                        response = g4f.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role": "user", "content": query_without_jarvis}],stream=True,)
-                        response_ls = []
-                        for message in response:
-                            print(message, flush=True, end='')
-                            response_ls.append(message)
-                        
-                        print(response_ls)
-                        listening()   
-                        break 
                 else:
+                    response = g4f.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role": "user", "content": query_without_jarvis}],stream=True,)
+                    response_ls = []
+                    for message in response:
+                        print(message, flush=True, end='')
+                        response_ls.append(message) 
+                    response_ls = ''.join(response_ls)      
+                    ar.say_j(response_ls)
                     print(Style.BRIGHT + Back.BLACK + ERROR_NO_COMMAND)
                     print(Style.NORMAL + Back.BLACK)
                     listening()                      
