@@ -1,12 +1,31 @@
 import tkinter as tk
 from random import randint
-from main import listening
+#from main import listening
 from commands import stop_jarvis
+import subprocess
+
 WIDTH = 400
 HEIGHT = 600
 RADIUS = 50
 
-colors = ['blue']
+colors = ['blue']#шарики
+
+previous_process = None
+def start_up():
+    subprocess.call(['python', 'main.py'])
+    #global previous_process
+    # Проверяем, был ли запущен предыдущий сабпроцесс
+    #if previous_process and previous_process.poll() is None:
+    #    previous_process.terminate() 
+
+    #previous_process = subprocess.Popen(['python', 'main.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #while True:
+    #    output = previous_process.stdout.readline().decode()
+    #    if output == '' and previous_process.poll() is not None:
+    #        break
+    #    if output:
+    #        label.config(text=output.strip()) # обновляем виджет Label
+    #    root.update()
 
 def create_circle(x, y, r, color):
     return canvas.create_oval(x-r, y-r, x+r, y+r, fill=color)
@@ -35,8 +54,12 @@ def move_circles():
 
 # Create the tkinter window
 root = tk.Tk()
+
+label = tk.Label(root, text="Привет, мир!", font=("Arial", 10))
+label.pack()
+
 root.geometry(f"{WIDTH}x{HEIGHT}")
-root.title("Jarvice-assistant-service")
+root.title("Jarvice-service")
 # Create the canvas
 canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT)
 canvas.pack()
@@ -51,12 +74,12 @@ for _ in colors:
 button_frame = tk.Frame(root)
 button_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-button1 = tk.Button(button_frame, text="СТАРТ", command=listening, width=10, height=2, bd=8, relief=tk.RAISED, padx=20, borderwidth=4, font=('Arial', 12, 'bold'))
+button1 = tk.Button(button_frame, text="СТАРТ", command=start_up, width=10, height=2, bd=8, relief=tk.RAISED, padx=20, borderwidth=4, font=('Arial', 12, 'bold'))
 button1.pack(side=tk.LEFT, padx=5)
 
 button2 = tk.Button(button_frame, text="СТОП", command= stop_jarvis, width=10, height=2, bd=8, relief=tk.RAISED, padx=20, borderwidth=4, font=('Arial', 12, 'bold'))
 button2.pack(side=tk.LEFT, padx=5)
 
 move_circles()
-
+start_up()
 root.mainloop()

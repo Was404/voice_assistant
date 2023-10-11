@@ -37,17 +37,17 @@ def listening():
                         print(Style.NORMAL + Back.BLACK)
                         listening()
                         break
-                else:
-                    response = g4f.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role": "user", "content": query_without_jarvis}],stream=True,)
-                    response_ls = []
-                    for message in response:
-                        print(message, flush=True, end='')
-                        response_ls.append(message) 
-                    response_ls = ''.join(response_ls)      
-                    ar.say_j(response_ls)
-                    print(Style.BRIGHT + Back.BLACK + ERROR_NO_COMMAND)
-                    print(Style.NORMAL + Back.BLACK)
-                    listening()                      
+                    else:
+                        response = g4f.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role": "user", "content": query_without_jarvis}],stream=True,)
+                        response_ls = []
+                        for message in response:
+                            print(message, flush=True, end='')
+                            response_ls.append(message) 
+                        response_ls = ''.join(response_ls)      
+                        ar.say_j(response_ls)
+                        print(Style.BRIGHT + Back.BLACK + ERROR_NO_COMMAND)
+                        print(Style.NORMAL + Back.BLACK)
+                        listening()                      
         else: #не прошёл проверку на джарвиса
             listening()
             return query 
@@ -56,15 +56,15 @@ def listening():
         print(Style.NORMAL)
         listening()
 
-#if __name__ == '__main__':
-#    print(Fore.RED + "░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗░░░██████╗██╗██████╗░")
-#    print(Fore.RED + "░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝░░██╔════╝██║██╔══██╗")
-#    print(Fore.RED + "░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░╚█████╗░░██║██████╔╝")
-#    print(Fore.RED + "░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░░░╚═══██╗██║██╔══██╗")
-#    print(Fore.RED + "░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗░░██████╔╝██║██║░░██║")
-#    print(Fore.RED + "░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝░░╚═════╝░╚═╝╚═╝░░╚═╝")
-#    print(Fore.WHITE + "")
-#    ar.say_j('Готов к работе!')
-#    print(Fore.WHITE + Back.BLACK + Style.NORMAL)
-#    listening()
+if __name__ == '__main__':
+    print(Fore.RED + "░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗░░░██████╗██╗██████╗░")
+    print(Fore.RED + "░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝░░██╔════╝██║██╔══██╗")
+    print(Fore.RED + "░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░╚█████╗░░██║██████╔╝")
+    print(Fore.RED + "░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░░░╚═══██╗██║██╔══██╗")
+    print(Fore.RED + "░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗░░██████╔╝██║██║░░██║")
+    print(Fore.RED + "░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝░░╚═════╝░╚═╝╚═╝░░╚═╝")
+    print(Fore.WHITE + "")
+    ar.say_j('Готов к работе!')
+    print(Fore.WHITE + Back.BLACK + Style.NORMAL)
+    listening()
     
