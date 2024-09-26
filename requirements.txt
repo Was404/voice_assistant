@@ -42,8 +42,8 @@ Pillow==9.5.0
 PyAudio==0.2.13
 PyAutoGUI==0.9.54
 pycparser==2.21
-pycryptodome==3.19.0
-pycryptodomex==3.19.0
+pycryptodome==3.19.1
+pycryptodomex==3.19.1
 PyExecJS==1.5.1
 PyGetWindow==0.0.9
 pyjsparser==2.7.1
